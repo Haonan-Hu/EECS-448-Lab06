@@ -13,6 +13,7 @@ void Test::runTests()
   testDequeueEmpty();
   testDequeueOnce();
   testDequeueTwice();
+  testPeekFrontDequeue();
 }
 
 void Test::testEmpty()
@@ -76,7 +77,7 @@ void Test::testEnqueueChar()
 {
   Queue qTest;
   qTest.enqueue('c');
-
+void testPeekFrontDequeue();
   if(qTest.isEmpty())
   {
     std::cout << "Enqueue a character on empty queue: PASSED\n";
@@ -92,7 +93,7 @@ void Test::testEnqueueTwice()
   Queue qTest;
   qTest.enqueue(1);
   qTest.enqueue(2);
-
+void testPeekFrontDequeue();
   if(qTest.peekFront() == 1)
   {
     std::cout << "Enqueue 1 and 2 on empty queue then peekFront return 2: PASSED\n";
@@ -141,9 +142,18 @@ void Test::testDequeueTwice()
   Queue qTest;
   qTest.enqueue(1);
   qTest.enqueue(2);
-  qTest.dequeue();
-  qTest.dequeue();
 
+  qTest.dequeue();
+  if(qTest.peekFront() == 2)
+  {
+    std::cout << "Dequeue 1: PASSED\n";
+  }
+  else
+  {
+    std::cout << "Dequeue 1: FAILED\n";
+  }
+
+  qTest.dequeue();
   if(qTest.isEmpty())
   {
     std::cout << "Enqueue 1 and 2 on empty queue then dequeue twice: PASSED\n";
@@ -151,5 +161,48 @@ void Test::testDequeueTwice()
   else
   {
     std::cout << "Enqueue 1 and 2 on empty queue then dequeue twice: FAILED\n";
+  }
+}
+
+void Test::testPeekFrontDequeue()
+{
+  Queue qTest;
+  bool checkE1 = false;
+  bool checkE2 = false;
+  bool checkE3 = false;
+  bool checkE4 = false;
+  qTest.enqueue(1);
+  qTest.enqueue(2);
+  qTest.enqueue(3);
+  qTest.enqueue(4);
+
+  if(qTest.peekFront() == 1)
+  {
+    checkE1 = true;
+    qTest.dequeue();
+  }
+  if(qTest.peekFront() == 2)
+  {
+    checkE2 = true;
+    qTest.dequeue();
+  }
+  if(qTest.peekFront() == 3)
+  {
+    checkE3 = true;
+    qTest.dequeue();
+  }
+  if(qTest.peekFront() == 4)
+  {
+    checkE4 = true;
+    qTest.dequeue();
+  }
+
+  if(checkE1 && checkE2 && checkE3 && checkE4)
+  {
+    std::cout << "Enqueue 1 to 4 on empty queue then peekFront each time after dequeue: PASSED \n";
+  }
+  else
+  {
+    std::cout << "Enqueue 1 to 4 on empty queue then peekFront each time after dequeue: FAILED \n";
   }
 }

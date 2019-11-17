@@ -1,0 +1,6 @@
+1. Enqueue a character in a list is allowed
+2. peekFront seems returning the back of Queue, but whether peekFront returns
+back of queue or enqueue is add from front cannot be decided
+3. dequeue is funtional if peekFront is funtional
+4. There is memory leak in the program, the possible reason might be the destructor is
+not calling dequeue correctly

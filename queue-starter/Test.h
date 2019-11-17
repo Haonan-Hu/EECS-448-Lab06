@@ -52,7 +52,7 @@ class Test
     void testEnqueueTwice();
 
     /**
-  	*	@post Enqueue 1 on empty queue then dequeue
+  	*	@post empty queue then dequeue
   	*	@param none
   	*/
     void testDequeueEmpty();
@@ -68,11 +68,10 @@ class Test
   	*	@param none
   	*/
     void testDequeueTwice();
-
     /**
-  	*	@post Enqueue 1 and
-  	*	@param none
-  	*/
-    void testEnqueueRef();
+    *	@post Enqueue 1 to 4 on empty queue then peekFront each time after dequeue
+    *	@param none
+    */
+    void testPeekFrontDequeue();
 };
 #endif
